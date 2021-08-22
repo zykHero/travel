@@ -1,0 +1,90 @@
+<div class="footprint-toolbar">
+    <div class="footprint-toolbar-left">
+        <button nz-button nzType="primary" nzShape="round" (click)="operationRecodrd('new')" >
+            <i nz-icon nzType="plus" nzTheme="outline" ></i>
+            新增
+        </button>
+        <button *ngIf="viewType === customKeyName.grid" nz-button nzType="primary" nzShape="round" (click)="operationRecodrd('modify')" >
+            <i nz-icon nzType="edit" nzTheme="outline"></i>
+            修改
+        </button>
+        <button *ngIf="viewType === customKeyName.grid" nz-button nzType="primary" nzShape="round" (click)="operationRecodrd('delete')" >
+            <i nz-icon nzType="delete" nzTheme="outline"></i>
+            删除
+        </button>
+    </div>
+    <div class="footprint-toolbar-right">
+        <div class="viewSwitchButton">
+            <div class="view-type-map-button" (click)="switchViewType('map')">
+                <i [ngClass]="{'activeView':viewType==='map'}" nz-icon nzType="global" nzTheme="outline" ></i>
+            </div>
+            <div class="view-type-grid-button" (click)="switchViewType('grid')">
+                <i [ngClass]="{'activeView':viewType==='grid'}" nz-icon nzType="bars" nzTheme="outline" ></i>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<!-- 地图 -->
+<app-map #mapComponent *ngIf="viewType === customKeyName.map" [data]="data"></app-map>
+
+<!-- 表格 -->
+<ng-container *ngIf="viewType === customKeyName.grid">
+    <nz-table #rowSelectionTable nzShowSizeChanger [nzData]="listOfData" [nzSize]="small">
+     <thead>
+       <tr>
+         <th [nzShowCheckbox]='true' [(nzChecked)]="checked" (nzCheckedChange)="onAllChecked($event)"></th>
+         <th *ngFor="let col of columns">{{col.name}}</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let item of data">
+         <td [nzShowCheckbox]='true' [nzChecked]="item.isSelect" (nzCheckedChange)="onItemChecked(item, $event)"></td>
+         <td>{{ item.city }}</td>
+         <td>{{ item.address }}</td>
+         <td>{{ item.time }}</td>
+         <td>{{ item.weather }}</td>
+         <td>{{ item.accompanyer }}</td>
+       </tr>
+     </tbody>
+   </nz-table>
+</ng-container>
+
+
+<!-- 新建、编辑窗口 -->
+<nz-modal [(nzVisible)]="isVisible" nzTitle="新增" (nzOnOk)="submitForm()" (nzOnCancel)="closeWindow()" (nzAfterOpen)="showWindowCallback()" [nzOkLoading]="submitLoading">
+    <ng-container>
+        <form nz-form [formGroup]="validateForm">
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>日期</nz-form-label>
+                <nz-form-control [nzSm]="16" [nzXs]="24" nzHasFeedback [nzErrorTip]="datePickerErrorTpl">
+                    <nz-date-picker formControlName="datePicker"></nz-date-picker>
+                    <ng-template #datePickerErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">请输入日期！</ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24" nzRequired>地址</nz-form-label>
+                <nz-form-control [nzSm]="16" [nzXs]="24" nzHasFeedback [nzErrorTip]="addressErrorTpl">
+                    <input nz-input formControlName="address" id="address" />
+                    <ng-template #addressErrorTpl let-control>
+                        <ng-container *ngIf="control.hasError('required')">请输入地址！</ng-container>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">天气</nz-form-label>
+                <nz-form-control [nzSm]="16" [nzXs]="24">
+                    <input nz-input formControlName="weather"/>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label [nzSm]="8" [nzXs]="24">驴友</nz-form-label>
+                <nz-form-control [nzSm]="16" [nzXs]="24">
+                    <input nz-input placeholder="请使用','分割" formControlName="travelCompanion"/>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-container>
+</nz-modal>

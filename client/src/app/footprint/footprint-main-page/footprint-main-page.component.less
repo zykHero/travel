@@ -1,0 +1,28 @@
+@toolbarBottom:16px;
+@iconFontSize:18px;
+@viewSwitchIconMarginValue:10px;
+.footprint-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: @toolbarBottom;
+    .footprint-toolbar-left {
+        button {
+            margin-left: 20px;
+        }
+    }
+    .viewSwitchButton {
+        display: flex;
+        .view-type-grid-button {
+            margin-left: @viewSwitchIconMarginValue;
+        }
+        i {
+            font-size: @iconFontSize;
+        }
+        i:hover {
+            cursor: pointer;
+        }
+        .activeView {
+            color: #1890ff;
+        }
+    } 
+}
