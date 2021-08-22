@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.business.usermanager.mapper.TravelMapper">
+    <resultMap id="Travel" type="com.business.usermanager.bean.Travel">
+        <result column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="date" property="date" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="weather" property="weather" jdbcType="VARCHAR"/>
+        <result column="companion" property="companion" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getAllTravelSchedule" resultMap="Travel">
+        SELECT * FROM travel_schedule
+    </select>
+    <insert id="addTravelSchedule" parameterType="com.business.usermanager.bean.Travel" useGeneratedKeys="true">
+        INSERT INTO travel_schedule(id, date, address, weather, companion)
+  	    VALUES(#{id},#{date},#{address},#{weather},#{companion})
+    </insert>
+    <update id="updateTravelSchedule" parameterType="com.business.usermanager.bean.Travel">
+        UPDATE travel_schedule
+        SET date = #{date},address = #{address},weather = #{weather},companion = #{companion}
+        WHERE id = #{id}
+    </update>
+    <delete id="deleteTravelSchedule" parameterType="int">
+        DELETE FROM travel_schedule WHERE id = #{id}
+    </delete>
+</mapper>
