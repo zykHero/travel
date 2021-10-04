@@ -2,6 +2,16 @@
     "menu": {
         "footprint": "足迹"
     },
+    "common": {
+
+    },
+    "login": {
+        "name": "用户名",
+        "password": "密码",
+        "register": "注册",
+        "forgetPassword": "忘记密码",
+        "loginInTo": "登录"
+    },
     "footprint": {
 
     }

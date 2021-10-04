@@ -7,8 +7,8 @@ import{ TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  isCollapsed = false;
   constructor(public translate: TranslateService) {
+    translate.setDefaultLang('zh');
     this.translate.use('zh');
   }
 }
