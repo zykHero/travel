@@ -1,5 +1,7 @@
 export let AppURL = {
+    login: '/api/login',
     footPrint: {
-        createFootPrint: '/addTravelSchedule'
+        createFootPrint: '/api/addTravelSchedule',
+
     }
 };

@@ -10,7 +10,10 @@
         "password": "密码",
         "register": "注册",
         "forgetPassword": "忘记密码",
-        "loginInTo": "登录"
+        "loginInTo": "登录",
+        "userNameInfo": "请输入用户名",
+        "userPWDInfo": "请输入密码"
+
     },
     "footprint": {
 

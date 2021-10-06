@@ -1,16 +1,16 @@
 
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
         <nz-form-item>
-          <nz-form-control nzErrorTip="Please input your username!">
+          <nz-form-control [nzErrorTip]="nameInfo">
             <nz-input-group nzPrefixIcon="user">
-              <input type="text" nz-input formControlName="userName" [placeholder]="nameText" />
+              <input type="text" nz-input formControlName="userName" autocomplete='off' [placeholder]="nameText" (input)="watchInput()"/>
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>
-          <nz-form-control nzErrorTip="Please input your Password!">
+          <nz-form-control [nzErrorTip]="pwdInfo">
             <nz-input-group nzPrefixIcon="lock">
-              <input type="password" nz-input formControlName="password" [placeholder]="pwdText" />
+              <input type="password" nz-input formControlName="password" autocomplete="off" [placeholder]="pwdText" (input)="watchInput()"/>
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
@@ -22,6 +22,6 @@
             <a>{{'login.forgetPassword' | translate}}</a>
           </div>
         </div>
-        <button nz-button class="login-form-button" [nzType]="'primary'">{{'login.loginInTo' | translate}}</button>
+        <button nz-button class="login-form-button" [disabled]="disabledSubimtBtn" [nzType]="'primary'">{{'login.loginInTo' | translate}}</button>
     </form>
 
