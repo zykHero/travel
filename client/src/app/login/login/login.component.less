@@ -1,20 +1,24 @@
 @loginFormWidth:320px;
+@loginComponentMargin:16px;
 .login-form {
     width: @loginFormWidth;
     max-width: 400px;
     position: absolute;
     left: calc(50% - @loginFormWidth/2);
-    top: 50%
-  }
-
-.login-form-margin {
-    margin-bottom: 16px;
+    top: 50%;
+    .login-form-alink {
+        margin-bottom: @loginComponentMargin;
+        .login-form-register {
+            text-align: left;
+        }      
+        .login-form-forgot {
+            text-align: right;
+        }
+    }
+    .login-form-button {
+        width: 100%;
+    }
 }
 
-.login-form-forgot {
-    float: right;
-}
 
-.login-form-button {
-    width: 100%;
-}
+

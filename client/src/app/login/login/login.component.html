@@ -14,14 +14,14 @@
             </nz-input-group>
           </nz-form-control>
         </nz-form-item>
-        <div nz-row class="login-form-margin">
-          <div nz-col [nzSpan]="12">
-            <a class="login-form-forgot">{{'login.register' | translate}}</a>
+        <div nz-row class="login-form-alink">
+          <div nz-col [nzSpan]="12" class="login-form-register">
+            <a>{{'login.register' | translate}}</a>
           </div>
-          <div nz-col [nzSpan]="12">
-            <a class="login-form-forgot">{{'login.loginInTo' | translate}}</a>
+          <div nz-col [nzSpan]="12" class="login-form-forgotPwd">
+            <a>{{'login.forgetPassword' | translate}}</a>
           </div>
         </div>
-        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">{{'login.forgetPassword' | translate}}</button>
+        <button nz-button class="login-form-button" [nzType]="'primary'">{{'login.loginInTo' | translate}}</button>
     </form>
 
