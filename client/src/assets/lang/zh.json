@@ -14,7 +14,8 @@
         "userNameInfo": "请输入用户名",
         "userPWDInfo": "请输入密码",
         "confirmPwd": "密码确认",
-        "confirmPwdError":"您输入的两个密码不一致！"
+        "confirmPwdError":"您输入的两个密码不一致！",
+        "registerSuccessInfo": "恭喜你，注册已成功，你可以使用注册的账号登陆系统了。"
     },
     "footprint": {
 

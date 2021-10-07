@@ -2,6 +2,7 @@ import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginService } from '../login.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-register',
@@ -30,7 +31,8 @@ export class RegisterComponent implements OnInit {
     }
   }
   @Output() closeRegisterModelEvent:any = new EventEmitter();
-  constructor(private fb: FormBuilder, private translate: TranslateService, private loginService: LoginService) { }
+  constructor(private fb: FormBuilder, private translate: TranslateService, private loginService: LoginService,
+    private message: NzMessageService) { }
 
   ngOnInit() {
     this.initFormValue();
@@ -40,6 +42,7 @@ export class RegisterComponent implements OnInit {
   handleOk(): void {
     [this.isOkLoading,this.isDisabledButton] = [true,true];
     this.loginService.registerUser(this.validateForm.value).subscribe(()=>{
+      this.message.success(this.translate.instant('login.registerSuccessInfo'));
       [this.isOkLoading,this.isDisabledButton] = [false,false];
       this.closeModelCallback();
     },()=>{
