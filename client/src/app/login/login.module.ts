@@ -12,8 +12,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   imports: [
@@ -27,7 +27,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     NzGridModule,
     NzCheckboxModule,
-    TranslateModule
+    TranslateModule,
+    NzModalModule
   ]
 })
 export class LoginModule { }

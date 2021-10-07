@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 import { LoginService } from '../login.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,31 +15,17 @@ export class LoginComponent implements OnInit {
   pwdText: string = this.translate.instant('login.password');
   nameInfo: string = this.translate.instant('login.userNameInfo');
   pwdInfo: string = this.translate.instant('login.userPWDInfo');
-  disabledSubimtBtn: boolean = true;
+  disabledSubimtBtn: boolean = false;
+  isShowRegisterModel: boolean = false;
 
-
-  constructor(private fb: FormBuilder, public translate: TranslateService, private loginService: LoginService) { }
+  constructor(private fb: FormBuilder, public translate: TranslateService, private loginService: LoginService,
+    private nzMessageService: NzMessageService) { }
 
   ngOnInit() {
     this.validateForm = this.fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
-  }
-
-  watchInput() {
-    if (this.validateForm.value === null) {
-      this.disabledSubimtBtn = true;
-    } else {
-      const valueArray = [];
-      for (let key in this.validateForm.value) {
-        valueArray.push(this.validateForm.value[key]);
-      }
-      const isExistEmptyValue = valueArray.some(ele => {
-        return ele === '';
-      });
-      this.disabledSubimtBtn = isExistEmptyValue;
-    }
   }
 
   submitForm(): void {
@@ -48,6 +35,14 @@ export class LoginComponent implements OnInit {
     }, () => {
       this.disabledSubimtBtn = false;
     });
+  }
+
+  startRegister() {
+    this.isShowRegisterModel = true;
+  }
+
+  watchCloseRegister () {
+    this.isShowRegisterModel = false;
   }
 
 }

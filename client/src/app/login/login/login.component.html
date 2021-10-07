@@ -1,27 +1,28 @@
 
-    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
-        <nz-form-item>
-          <nz-form-control [nzErrorTip]="nameInfo">
-            <nz-input-group nzPrefixIcon="user">
-              <input type="text" nz-input formControlName="userName" autocomplete='off' [placeholder]="nameText" (input)="watchInput()"/>
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
-        <nz-form-item>
-          <nz-form-control [nzErrorTip]="pwdInfo">
-            <nz-input-group nzPrefixIcon="lock">
-              <input type="password" nz-input formControlName="password" autocomplete="off" [placeholder]="pwdText" (input)="watchInput()"/>
-            </nz-input-group>
-          </nz-form-control>
-        </nz-form-item>
-        <div nz-row class="login-form-alink">
-          <div nz-col [nzSpan]="12" class="login-form-register">
-            <a>{{'login.register' | translate}}</a>
-          </div>
-          <div nz-col [nzSpan]="12" class="login-form-forgotPwd">
-            <a>{{'login.forgetPassword' | translate}}</a>
-          </div>
-        </div>
-        <button nz-button class="login-form-button" [disabled]="disabledSubimtBtn" [nzType]="'primary'">{{'login.loginInTo' | translate}}</button>
-    </form>
+<form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="nameInfo">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text" nz-input formControlName="userName" autocomplete='off' [placeholder]="nameText"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control [nzErrorTip]="pwdInfo">
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password" nz-input formControlName="password" autocomplete="off" [placeholder]="pwdText"/>
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <div nz-row class="login-form-alink">
+      <div nz-col [nzSpan]="12" class="login-form-register">
+        <a (click)="startRegister()">{{'login.register' | translate}}</a>
+      </div>
+      <div nz-col [nzSpan]="12" class="login-form-forgotPwd">
+        <a>{{'login.forgetPassword' | translate}}</a>
+      </div>
+    </div>
+    <button nz-button class="login-form-button" [disabled]="!validateForm.valid || disabledSubimtBtn" [nzType]="'primary'">{{'login.loginInTo' | translate}}</button>
+</form>
+<app-register [isShowRegisterModel]="isShowRegisterModel" (closeRegisterModelEvent)="watchCloseRegister()"></app-register>
 

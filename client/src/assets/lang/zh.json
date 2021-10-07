@@ -3,7 +3,7 @@
         "footprint": "足迹"
     },
     "common": {
-
+        "required": "请输入{{value}}!"
     },
     "login": {
         "name": "用户名",
@@ -12,8 +12,9 @@
         "forgetPassword": "忘记密码",
         "loginInTo": "登录",
         "userNameInfo": "请输入用户名",
-        "userPWDInfo": "请输入密码"
-
+        "userPWDInfo": "请输入密码",
+        "confirmPwd": "密码确认",
+        "confirmPwdError":"您输入的两个密码不一致！"
     },
     "footprint": {
 

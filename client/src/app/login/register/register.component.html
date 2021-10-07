@@ -1,1 +1,39 @@
-<p>register works!</p>
+<nz-modal [(nzVisible)]="isShowRegisterModel" [nzTitle]="modelTitle"
+(nzOnCancel)="handleCancel()"
+(nzOnOk)="handleOk()"
+[nzOkLoading]="isOkLoading"
+[nzOkDisabled]="!validateForm.valid || isDisabledButton"
+>
+<ng-container>
+    <form nz-form [formGroup]="validateForm">
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>{{configLabel.name}}</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="userNameErrorTpl">
+                <input nz-input formControlName="userName" id="userName" />
+                <ng-template #userNameErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">{{ 'common.required' | translate:{value: configLabel.name} }}</ng-container>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>{{configLabel.password}}</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="passwordErrorTpl">
+                <input nz-input formControlName="password" type="password" id="password" (ngModelChange)="updateConfirmValidator()"/>
+                <ng-template #passwordErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">{{ 'common.required' | translate:{value: configLabel.password} }}</ng-container>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>{{configLabel.confirmPwd}}</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24" nzHasFeedback [nzErrorTip]="confirmPwdErrorTpl">
+                <input nz-input formControlName="confirmPwd" type="password" id="confirmPwd" />
+                <ng-template #confirmPwdErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">{{ 'common.required' | translate:{value: configLabel.confirmPwd} }}</ng-container>
+                    <ng-container *ngIf="control.hasError('confirm')">{{ 'login.confirmPwdError' | translate }}</ng-container>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</ng-container>
+</nz-modal>
