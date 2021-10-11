@@ -21,6 +21,7 @@ import { LoginModule } from './login/login.module';
 import { HttpRequestInterceptService } from './common/service/http-client/http-request-intercept.service';
 import { HttpResponseInterceptService } from './common/service/http-client/http-response-intercept.service';
 import { appInitializerFactory } from './common/appInitializer';
+import { MenuFrameModule } from './menu-frame/menu-frame.module'
 registerLocaleData(zh);
 export function createTranslateHttpLoader(http: HttpClient) {
   //请求国际化文件，资源文件放在/assets/lang/下，类型是json文件
@@ -39,6 +40,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     AppRoutingModule,
     IconsProviderModule,
     LoginModule,
+    MenuFrameModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

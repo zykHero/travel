@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
   isShowRegisterModel: boolean = false;
 
   constructor(private fb: FormBuilder, public translate: TranslateService, private loginService: LoginService,
-    private nzMessageService: NzMessageService) { }
+    private nzMessageService: NzMessageService, private router:Router) { }
 
   ngOnInit() {
     this.validateForm = this.fb.group({
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
 
   submitForm(): void {
     this.disabledSubimtBtn = true;
+    this.router.navigateByUrl('/main/footprint');
     this.loginService.submitLogin(this.validateForm.value).subscribe(res => {
       this.disabledSubimtBtn = false;
     }, () => {
