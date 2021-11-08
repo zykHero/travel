@@ -1,6 +1,7 @@
 {
     "menu": {
-        "footprint": "足迹"
+        "footprint": "足迹",
+        "diary": "日记"
     },
     "common": {
         "required": "请输入{{value}}!"
