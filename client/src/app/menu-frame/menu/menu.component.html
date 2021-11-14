@@ -1,10 +1,6 @@
 <nz-layout class="app-layout">
-  <nz-sider class="menu-sidebar"
-            nzCollapsible
-            nzWidth="256px"
-            nzBreakpoint="md"
-            [(nzCollapsed)]="isCollapsed"
-            [nzTrigger]="null">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" 
+    [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="sidebar-logo">TODO</div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
@@ -31,6 +27,15 @@
       <div class="app-header">
         <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
             <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+        </span>
+        <span class="header-right">
+          <nz-avatar nzSize="large" nzIcon="user" nz-dropdown [nzPlacement]="'bottomCenter'" [nzDropdownMenu]="menu"></nz-avatar>
+          <nz-dropdown-menu #menu="nzDropdownMenu" >
+            <ul nz-menu>
+              <li nz-menu-item>用户名： {{userName}}</li>
+              <li nz-menu-item (click)="logout()">退出</li>
+            </ul>
+          </nz-dropdown-menu>
         </span>
       </div>
     </nz-header>

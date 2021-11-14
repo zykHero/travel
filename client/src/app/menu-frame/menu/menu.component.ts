@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
   isCollapsed = false;
+  userName: string = 'zykzykzyzzykzykz'
   constructor() { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    console.log('弹出退出二次确认框 ')
   }
 
 }

@@ -6,6 +6,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { RouterModule } from '@angular/router';
+import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 @NgModule({
   declarations: [MenuComponent],
@@ -15,7 +17,9 @@ import { RouterModule } from '@angular/router';
     NzMenuModule,
     TranslateModule,
     NzIconModule,
-    RouterModule
+    RouterModule,
+    NzAvatarModule,
+    NzDropDownModule
   ]
 })
 export class MenuFrameModule { }
