@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
 import { FootprintService } from '../footprint.service';
 import { MapCustomControl } from '../map-custom-control';
 declare var BMapGL: any;
@@ -8,12 +8,16 @@ declare var BMAP_ANCHOR_TOP_LEFT, BMAP_ANCHOR_TOP_RIGHT: any;
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.less']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, AfterViewInit {
   @Input() data: [] = [];
   title = 'map';
   map: any;
   constructor(private footprintService: FootprintService) { }
   ngOnInit() {
+    
+  }
+
+  ngAfterViewInit() {
     this.createMap();
   }
 
