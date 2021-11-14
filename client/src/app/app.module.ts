@@ -23,6 +23,8 @@ import { HttpResponseInterceptService } from './common/service/http-client/http-
 import { appInitializerFactory } from './common/appInitializer';
 import { MenuFrameModule } from './menu-frame/menu-frame.module';
 import { NgxTinymceModule } from 'ngx-tinymce';
+import { GlobalService } from './common/service/global.service';
+
 registerLocaleData(zh);
 export function createTranslateHttpLoader(http: HttpClient) {
   //请求国际化文件，资源文件放在/assets/lang/下，类型是json文件
@@ -62,7 +64,8 @@ export function createTranslateHttpLoader(http: HttpClient) {
       useFactory: appInitializerFactory,
       deps: [TranslateService, Injector], //params
       multi: true
-    }
+    },
+    GlobalService
   ],
   bootstrap: [AppComponent]
 })

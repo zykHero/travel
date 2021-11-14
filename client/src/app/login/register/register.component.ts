@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required]],
       confirmPwd: ['',[Validators.required, this.confirmationValidator]]
     });
+    this.isDisabledButton = false;
   }
 
   private confirmationValidator = (control: FormControl): { [s: string]: boolean } => {

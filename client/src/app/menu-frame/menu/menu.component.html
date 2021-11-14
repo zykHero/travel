@@ -1,8 +1,8 @@
 <nz-layout class="app-layout">
   <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" 
     [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-    <div class="sidebar-logo">TODO</div>
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+    <div class="sidebar-logo">旅行日记</div>
+    <ul nz-menu nzTheme="nzTheme" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
       <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
         <ul>
           <li nz-menu-item nzMatchRouter>
@@ -10,13 +10,6 @@
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/main/diary">{{ 'menu.diary' | translate}}</a>
-          </li>
-        </ul>
-      </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>TODO</a>
           </li>
         </ul>
       </li>
@@ -32,8 +25,8 @@
           <nz-avatar nzSize="large" nzIcon="user" nz-dropdown [nzPlacement]="'bottomCenter'" [nzDropdownMenu]="menu"></nz-avatar>
           <nz-dropdown-menu #menu="nzDropdownMenu" >
             <ul nz-menu>
-              <li nz-menu-item>用户名： {{userName}}</li>
-              <li nz-menu-item (click)="logout()">退出</li>
+              <li nz-menu-item>{{userName}}</li>
+              <li nz-menu-item (click)="showLogoutConfirm()">退出</li>
             </ul>
           </nz-dropdown-menu>
         </span>

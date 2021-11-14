@@ -1,8 +1,9 @@
+const URLPrefix = '/api/travel';
 export let AppURL = {
-    login: '/api/login',
-    register: '/api/register',
+    login: `${URLPrefix}/user/login`,
+    register: `${URLPrefix}/user/register`,
     footPrint: {
-        createFootPrint: '/api/addTravelSchedule',
+        createFootPrint: `${URLPrefix}/addTravelSchedule`,
 
     }
 };
