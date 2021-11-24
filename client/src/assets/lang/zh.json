@@ -20,5 +20,9 @@
     },
     "footprint": {
 
+    },
+    "diary": {
+        "startDiaryButtonText": "开始写日记",
+        "emptyDiartInfo": "您已经走过很多地方啦，赶紧来记录下您的第一篇旅行日记吧~~"
     }
 }
