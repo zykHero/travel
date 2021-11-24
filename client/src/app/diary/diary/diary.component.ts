@@ -1,4 +1,6 @@
 import { Component, OnInit,Input, AfterViewInit, OnDestroy } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+
 // import 'tinymce';
 @Component({
   selector: 'app-diary',
@@ -10,7 +12,10 @@ export class DiaryComponent implements OnInit,AfterViewInit, OnDestroy {
   initConfig: any = {};
   data: any;
   editor: any;
-  constructor() { }
+  emptyDiaryInfo: string = this.translate.instant('diary.emptyDiartInfo');
+  emptyDataList: any[] = [];
+  isShowDiatyEditor: boolean = false;
+  constructor(public translate: TranslateService) { }
 
   ngOnInit() {
     
@@ -22,6 +27,10 @@ export class DiaryComponent implements OnInit,AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     // tinymce.remove(this.editor);
+  }
+
+  startWriteDiaty() {
+    this.isShowDiatyEditor = true;
   }
 
   initTinymce(){
