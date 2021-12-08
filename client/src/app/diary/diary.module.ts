@@ -7,6 +7,8 @@ import { NgxTinymceModule } from 'ngx-tinymce';
 import { NzResultModule } from 'ng-zorro-antd/result';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { RichTextEditorModule } from '../common/component/rich-text-editor/rich-text-editor.module';
+
 @NgModule({
   declarations: [DiaryComponent],
   imports: [
@@ -16,7 +18,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NgxTinymceModule,
     NzResultModule,
     TranslateModule,
-    NzButtonModule
+    NzButtonModule,
+    RichTextEditorModule
   ]
 })
 export class DiaryModule { }

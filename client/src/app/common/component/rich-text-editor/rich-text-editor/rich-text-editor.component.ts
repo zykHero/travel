@@ -23,7 +23,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit, OnDestroy
 
   initTinymce(){
     this.initConfig = {
-      placeholder: '请输入内容',// 占位符
+      placeholder: '',// 占位符
       // 高度 max_height, max_width, min_height, min_width
       min_height: 600,
       // 编辑器底边距
@@ -42,7 +42,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit, OnDestroy
       // html5模式是完整的HTML5规范，它兼容旧的HTML4。html5-strict是HTML5的严格模式，它只允许HTML5规范的元素，不包括已经被移除标准的元素。html4模式则是包括完整的HTML4过渡规范。在需要兼容老旧浏览器时，可能会用到该选项。
       schema: 'html5',
       // 隐藏状态栏 取消底部标签和组件介绍信息 状态栏是与编辑器的可编辑区域底部对齐的灰色栏。状态栏包含路径信息和调整大小手柄。删除状态栏将使用户无法更改可编辑区域的大小。
-      statusbar: true,
+      statusbar: false,
       
       // 是否允许改变高度，statusbar必须为true, 默认： true（仅允许改变高度）, false（完全不让你动）, 'both'（宽高都能改变，注意引号）
       resize: true,
@@ -59,6 +59,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit, OnDestroy
    
       // 语言
       language: 'zh_CN',
+      language_url : '/assets/library/tinymce/langs/zh_CN.js',
       
       // 浏览器的拼写检查
       // browser_spellcheck: true,

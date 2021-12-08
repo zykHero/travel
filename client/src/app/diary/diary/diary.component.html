@@ -1,7 +1,6 @@
-<nz-result *ngIf="emptyDataList.length === 0" [nzIcon]="'smile-twotone'"  [nzTitle]="emptyDiaryInfo">
+<nz-result *ngIf="isShowEmptyDiatyInfo"  [nzIcon]="'smile-twotone'"  [nzTitle]="emptyDiaryInfo">
     <div nz-result-extra>
-        <button nz-button nzType="primary" onclick="startWriteDiaty()">{{'diary.startDiaryButtonText' | translate}}</button>
+        <button nz-button nzType="primary" (click)="startWriteDiaty()">{{'diary.startDiaryButtonText' | translate}}</button>
     </div>
 </nz-result>
-<tinymce *ngIf="isShowDiatyEditor" [(ngModel)]="data" [config]="initConfig"></tinymce>
-<!-- <textarea [id]="elementId"></textarea> -->
+<app-rich-text-editor *ngIf="isShowDiatyEditor"></app-rich-text-editor>
